@@ -24,7 +24,7 @@ public class Main extends Application
         Scene theScene = new Scene( root );
         theStage.setScene( theScene );
 
-        Canvas canvas = new Canvas( 1024, 1024 );
+        Canvas canvas = new Canvas( 1001, 1101 );
         root.getChildren().add( canvas );
 
         //GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -32,7 +32,7 @@ public class Main extends Application
         Rectangle[][] rect = new Rectangle[100][100];
         for (int i = 0; i < 100; i++) {
             for (int z = 0; z < 100; z++) {
-                rect[i][z] = new Rectangle(i * 10, z * 10, 10, 10);
+                rect[i][z] = new Rectangle(i * 10 + 1, z * 10 + 1, 9, 9);
                 /*if (i % 2 > 0.0)
                     rect[i][z].setFill(Color.BISQUE);
                 else
