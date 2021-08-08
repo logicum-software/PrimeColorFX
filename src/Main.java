@@ -10,6 +10,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -25,24 +29,34 @@ public class Main extends Application {
         Canvas canvas = new Canvas(1001, 1101);
         root.getChildren().add(canvas);
 
+        final List<Integer> Dividends = new ArrayList<>();
+        final List<Integer> Divisors = new ArrayList<>();
+
+        for (int i = 0; i < 10000; i++)
+            Dividends.add(i);
+
+        for (int z = 2; z < 5000; z++)
+            Divisors.add(z);
+
+
+
         Boolean[] IsPrime = new Boolean[10000];
-        for (int i = 0; i < IsPrime.length; i++)
-            IsPrime[i] = false;
+        Arrays.fill(IsPrime, false);
 
         Rectangle[][] rect = new Rectangle[100][100];
         for (int i = 0; i < 100; i++) {
             for (int z = 0; z < 100; z++) {
                 rect[i][z] = new Rectangle(i * 10 + 1, z * 10 + 1, 9, 9);
-                //root.getChildren().add(rect[i][z]);
+                root.getChildren().add(rect[i][z]);
             }
         }
 
         rect[0][0].setFill(Color.BLUE);
         rect[1][0].setFill(Color.BLUE);
 
-        for (int current = 3; current < 10000; current++) {
-            for (int divisor = 2; divisor <= current / 2; divisor++) {
-                if (divisor < current / 2) {
+        for (int current : Dividends) {
+            for (int divisor : Divisors) {
+                if (divisor <= current / 2) {
                     if ((float) current % divisor == 0) {
                         IsPrime[current] = false;
                         break;
@@ -60,12 +74,9 @@ public class Main extends Application {
             int column = index % columns;
             int row = (index - column) / columns;
             if (IsPrime[index])
-                rect[row][column].setFill(Color.BLUE);
+                rect[column][row].setFill(Color.BLUE);
             else
-                rect[row][column].setFill(Color.BISQUE);
-
-            root.getChildren().add(rect[row][column]);
-
+                rect[column][row].setFill(Color.BISQUE);
         }
 
         theStage.show();
