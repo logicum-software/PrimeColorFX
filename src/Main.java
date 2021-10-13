@@ -52,7 +52,7 @@ public class Main extends Application {
         }
 
         rect[0][0].setFill(Color.BLUE);
-        rect[1][0].setFill(Color.BLUE);
+        rect[0][1].setFill(Color.RED);
 
         for (int current : Dividends) {
             for (int divisor : Divisors) {
@@ -74,9 +74,9 @@ public class Main extends Application {
             int column = index % columns;
             int row = (index - column) / columns;
             if (IsPrime[index])
-                rect[column][row].setFill(Color.BLUE);
+                rect[column][row].setFill(Color.RED);
             else
-                rect[column][row].setFill(Color.BISQUE);
+                rect[column][row].setFill(Color.BLUE);
         }
 
         theStage.show();
