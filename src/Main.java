@@ -46,7 +46,7 @@ public class Main extends Application {
         Rectangle[][] rect = new Rectangle[100][100];
         for (int i = 0; i < 100; i++) {
             for (int z = 0; z < 100; z++) {
-                rect[i][z] = new Rectangle(i * 10 + 1, z * 10 + 1, 9, 9);
+                rect[i][z] = new Rectangle(z * 10 + 1, i * 10 + 1, 9, 9);
                 root.getChildren().add(rect[i][z]);
             }
         }
@@ -68,16 +68,16 @@ public class Main extends Application {
             }
         }
 
-        int rows = 100;
+        /*int rows = 100;
         int columns = 100;
-        for (int index = 0;index < 10000; index++) {
+        for (int index = 0; index < 10000; index++) {
             int column = index % columns;
             int row = (index - column) / columns;
             if (IsPrime[index])
                 rect[column][row].setFill(Color.RED);
             else
                 rect[column][row].setFill(Color.BLUE);
-        }
+        }*/
 
         theStage.show();
     }
